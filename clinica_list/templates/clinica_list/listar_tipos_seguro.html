@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<form action="{% url 'crearSeg' %}" method="POST">
+  {% csrf_token %}
+  <input type="text" name="seg_id" placeholder="Ingrese su numero de seguro" />
+  <input
+    type="text"
+    name="seg_name"
+    placeholder="Ingrese su nombre de seguro"
+  />
+
+  <button>Guardar</button>
+</form>
+
+{% for seg in tiposSeguro %}
+<div>
+  <h3>{{seg.tipo_seguro_id}}</h3>
+  <p>{{seg.tipo_seguro_nombre}}</p>
+</div>
+{% empty %}
+<h2>No hay seguros</h2>
+{% endfor %}
+<!--  -->
+{%endblock%}

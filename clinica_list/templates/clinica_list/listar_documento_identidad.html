@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<form action="{% url 'crearDoc' %}" method="POST">
+  {% csrf_token %}
+  <input type="text" name="doc_id" placeholder="Ingrese su numero de documento" />
+  <input
+    type="text"
+    name="doc_name"
+    placeholder="Ingrese su nombre de documento"
+  />
+
+  <button>Guardar</button>
+</form>
+
+{% for doc in documentoIdentidad %}
+<div>
+  <h3>{{doc.tipo_documento_id}}</h3>
+  <p>{{doc.tipo_documento_nombre}}</p>
+</div>
+{% empty %}
+<h2>No hay documentos</h2>
+{% endfor %}
+<!--  -->
+{% endblock%}
