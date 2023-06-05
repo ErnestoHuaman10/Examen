@@ -13,8 +13,11 @@
       {%if request.user.is_authenticated %}
       <span>Hola {{ request.user.username | title }}</span>
       <a class="text-white" href="{% url 'logout' %}">Salir</a>
-      <a class="text-white" href="{% url 'mostraDoc' %}">documento</a>
-      <a class="text-white" href="{% url 'mostraSeg' %}">seguros</a>
+      <a class="text-white" href="{% url 'mostraDoc' %}">Documento</a>
+      <a class="text-white" href="{% url 'mostraSeg' %}">Seguros</a>
+      <a class="text-white" href="{% url 'mostraPaciente' %}">Pacientes</a>
+      <a class="text-white" href="{% url 'mostraEsp' %}">Especialidades</a>
+      <a class="text-white" href="{% url 'mostraDoct' %}">Doctores</a>
       {% else %}
       <a class="text-white" href="{% url 'login' %}">Login</a>
       <a class="text-white" href="{% url 'registro' %}">Registrarse</a>

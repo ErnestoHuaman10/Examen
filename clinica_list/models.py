@@ -38,3 +38,22 @@ class paciente(models.Model):
 
     class Meta:
         db_table="paciente"
+        
+class especialidades(models.Model):
+    especialidad_id = models.CharField(max_length=25, primary_key=True)
+    especialidad_nombre=models.CharField(max_length=150, null=False)
+
+    REQUIRED_FIELD = ["especialidad_nombre"]
+
+    class Meta:
+        db_table = "especialidades"
+
+
+class doctores(models.Model):
+    doctor_id = models.CharField(max_length=25, primary_key=True)
+    doctor_nombre=models.CharField(max_length=150, null=False)
+
+    REQUIRED_FIELD = ["doctor_nombre"]
+
+    class Meta:
+        db_table = "doctores"

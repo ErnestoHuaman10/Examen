@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+<form action="{% url 'crearDoct' %}" method="POST">
+  {% csrf_token %}
+  <input type="text" name="doct_id" placeholder="Ingrese su numero de Doctor" />
+  <input
+    type="text"
+    name="doct_name"
+    placeholder="Ingrese su nombre de Doctor"
+  />
+
+  <button>Guardar</button>
+</form>
+
+{% for doct in Doctores %}
+<div>
+  <h3>{{doct.doctor_id}}</h3>
+  <p>{{doct.doctor_nombre}}</p>
+  <form
+        action="{% url 'eliminar_doctor' doct.doctor_id %}"
+        method="POST"
+      >
+        {% csrf_token %}
+        <button class="">Eliminar</button>
+    </form>
+</div>
+{% empty %}
+<h2>No hay doctores</h2>
+{% endfor %}
+<!--  -->
+{%endblock%}

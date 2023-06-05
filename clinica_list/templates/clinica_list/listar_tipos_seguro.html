@@ -15,9 +15,16 @@
 <div>
   <h3>{{seg.tipo_seguro_id}}</h3>
   <p>{{seg.tipo_seguro_nombre}}</p>
+  <form
+        action="{% url 'eliminar_seguro' seg.tipo_seguro_id %}"
+        method="POST"
+      >
+        {% csrf_token %}
+        <button class="">Eliminar</button>
+    </form>
 </div>
 {% empty %}
 <h2>No hay seguros</h2>
 {% endfor %}
 <!--  -->
-{%endblock%}
+{%endblock%} 

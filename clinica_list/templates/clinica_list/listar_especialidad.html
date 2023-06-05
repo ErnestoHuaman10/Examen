@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+<form action="{% url 'crearEsp' %}" method="POST">
+  {% csrf_token %}
+  <input type="text" name="esp_id" placeholder="Ingrese su numero de Especialidad" />
+  <input
+    type="text"
+    name="esp_name"
+    placeholder="Ingrese su nombre de Especialidad"
+  />
+
+  <button>Guardar</button>
+</form>
+
+{% for esp in Especialidades %}
+<div>
+  <h3>{{esp.especialidad_id}}</h3>
+  <p>{{esp.especialidad_nombre}}</p>
+  <form
+        action="{% url 'eliminar_especialidad' esp.especialidad_id %}"
+        method="POST"
+      >
+        {% csrf_token %}
+        <button class="">Eliminar</button>
+    </form>
+</div>
+{% empty %}
+<h2>No hay especialidades</h2>
+{% endfor %}
+<!--  -->
+{%endblock%}

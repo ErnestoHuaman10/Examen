@@ -15,9 +15,16 @@
 <div>
   <h3>{{doc.tipo_documento_id}}</h3>
   <p>{{doc.tipo_documento_nombre}}</p>
+  <form
+        action="{% url 'eliminar_documento' doc.tipo_documento_id %}"
+        method="POST"
+      >
+        {% csrf_token %}
+        <button class="">Eliminar</button>
+    </form>
 </div>
 {% empty %}
 <h2>No hay documentos</h2>
 {% endfor %}
 <!--  -->
-{% endblock%}
+{%endblock%}
